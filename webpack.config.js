@@ -33,15 +33,16 @@ const webpackConfig = {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js' // Output to public/bundle.js
   },
-  module: { loaders: [ babelLoader, scssLoader, urlLoader, htmlLoader ] }
+  module: { loaders: [ babelLoader, scssLoader, urlLoader, htmlLoader ] },
+  devtool: 'eval-source-map'
 }
 
-if (process.env.NODE_ENV === 'production') {
-  // Minify for production build
-  webpackConfig.plugins = [ new BabiliPlugin({}) ]
-} else {
-  // Generate sourcemaps for dev build
-  webpackConfig.devtool = 'eval-source-map'
-}
+// if (process.env.NODE_ENV === 'production') {
+//   // Minify for production build
+//   webpackConfig.plugins = [ new BabiliPlugin({}) ]
+// } else {
+//   // Generate sourcemaps for dev build
+//  webpackConfig.devtool = 'eval-source-map'
+// }
 
 module.exports = webpackConfig
